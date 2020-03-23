@@ -9,6 +9,6 @@
     <%--
     <a href="hello">入门程序</a>
     --%>
-    <a href="user/testRequestMapping">RequestMapping注解</a>
+    <a href="user/testRequestMapping">RequestMapping注解1</a>
 </body>
 </html>
