@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -7,5 +7,8 @@
 
     <h3>入门成功</h3>
 
+    ${requestScope.msg}
+
+    ${sessionScope}
 </body>
 </html>
