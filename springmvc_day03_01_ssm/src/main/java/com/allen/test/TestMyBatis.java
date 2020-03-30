@@ -2,24 +2,31 @@ package com.allen.test;
 
 import com.allen.dao.AccountDao;
 import com.allen.domain.Account;
+import com.allen.service.AccountService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
 public class TestMyBatis {
+
+    @Autowired
+    private AccountService accountService;
     /**
      * 测试查询
      * @throws IOException
      */
     @Test
     public void run1() throws IOException {
-        //加载配置文件
+        /*//加载配置文件
         InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
@@ -34,8 +41,17 @@ public class TestMyBatis {
         }
         //关闭资源
         sqlSession.close();
-        in.close();
-
+        in.close();*/
+        //加载配置文件
+        ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        //获取对象
+        AccountService as = (AccountService) ac.getBean("accountService");
+        //调用方法
+        as.findAll();
+        List<Account> accounts = as.findAll();
+        for (Account account : accounts) {
+            System.out.println(account);
+        }
     }
 
     /***
